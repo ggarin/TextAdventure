@@ -25,14 +25,18 @@ class Directions:
                 print('or ' + iDirection.value)
         user_chose = input()
         if user_chose == 'N' or user_chose == 'North':
-            return Direction.NORTH
-        if user_chose == 'E' or user_chose == 'East':
-            return Direction.EAST
-        if user_chose == 'S' or user_chose == 'South':
-            return Direction.SOUTH
-        if user_chose == 'W' or user_chose == 'West':
-            return Direction.WEST
-        raise ValueError('Bad direction')
+            direction_choose = Direction.NORTH
+        elif user_chose == 'E' or user_chose == 'East':
+            direction_choose = Direction.EAST
+        elif user_chose == 'S' or user_chose == 'South':
+            direction_choose = Direction.SOUTH
+        elif user_chose == 'W' or user_chose == 'West':
+            direction_choose = Direction.WEST
+        else:
+            raise ValueError('Bad direction')
+        if direction_choose not in self.directions:
+            raise ValueError('Impossible direction')
+        return direction_choose
 
 
 def move(direction, location):
