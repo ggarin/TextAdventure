@@ -6,6 +6,9 @@ class Room:
     def display(self):
         print(self.name)
 
+    def get_name(self):
+        return self.name
+
 
 def main():
     my_room = Room()
