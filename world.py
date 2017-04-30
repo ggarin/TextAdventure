@@ -12,6 +12,11 @@ class World:
         room_shape = self.room_table.shape
         print('The world contains ' + str(room_shape[0]*room_shape[1]) + ' rooms')
 
+    def run_game(self):
+        while not self.hero.get_room().get_is_win():
+            self.hero.get_room().display()
+            self.hero.get_room().is_win = True
+
 
 def main():
     my_world = World()

@@ -12,6 +12,9 @@ class Hero:
     def move(self, room):
         self.room = room
 
+    def get_room(self):
+        return self.room
+
 
 def main():
     my_hero = Hero('ThT12', Room())
