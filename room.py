@@ -1,7 +1,7 @@
 class Room:
     # define a room
-    def __init__(self):
-        self.name = 'DefaultRoom'
+    def __init__(self, name='DefaultRoom'):
+        self.name = name
 
     def display(self):
         print(self.name)

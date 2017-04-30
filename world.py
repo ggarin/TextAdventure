@@ -4,7 +4,7 @@ import numpy
 
 
 class World:
-    def __init__(self, name = None):
+    def __init__(self, name=None):
         self.room_table = numpy.matrix([[Room(), Room()], [Room(), Room()]], dtype=Room)
         self.hero = Hero(name, self.room_table[0, 0])
 
