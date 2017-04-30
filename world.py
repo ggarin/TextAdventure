@@ -14,7 +14,7 @@ class World:
 
     def run_game(self):
         while not self.hero.get_room().get_is_win():
-            self.hero.get_room().display()
+            self.hero.get_room().action_room()
             self.hero.get_room().is_win = True
 
 
