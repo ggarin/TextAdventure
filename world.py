@@ -9,7 +9,8 @@ class World:
         self.hero = Hero(name, self.room_table[0, 0])
 
     def display(self):
-            print('The world contains ' + str(len(self.room_table)) + ' rooms')
+        room_shape = self.room_table.shape
+        print('The world contains ' + str(room_shape[0]*room_shape[1]) + ' rooms')
 
 
 def main():
