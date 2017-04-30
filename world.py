@@ -2,6 +2,7 @@ import numpy
 from room import Room
 from hero import Hero
 from directions import Direction, Directions, move
+from keys import Keys
 
 
 class World:
@@ -27,7 +28,7 @@ class World:
                                      'can see three half empty glasses. You see a close chest under the windows.',
                       Directions([Direction.WEST, Direction.NORTH, Direction.SOUTH]))
         room16 = Room('Chest', 'You open the chest and found bottles of alcohol.',
-                      Directions([Direction.SOUTH]))
+                      Directions([Direction.SOUTH]), Keys.BATHROOM_KEY)
         room11 = Room('Living room', 'This is another part of the living room. You can see a stair going down in North '
                                      'and a long hallway in the West.',
                       Directions([Direction.WEST, Direction.NORTH, Direction.EAST, Direction.SOUTH]))
@@ -40,8 +41,9 @@ class World:
         room9 = Room('Adults Chamber', 'A big room with a double bed. You can see a light passing though a door in '
                                        'the south.',
                      Directions([Direction.EAST, Direction.SOUTH]))
-        room5 = Room('Bathroom', 'You open the door and find a bathroom. You discover the girl afraid and crying !',
-                     Directions([Direction.EAST, Direction.SOUTH]), True)
+        room5 = Room('Bathroom', 'You open the door and find a bathroom. You discover the girl afraid and crying ! You '
+                                 'saved here !',
+                     Directions([Direction.EAST, Direction.SOUTH]), None, Keys.BATHROOM_KEY, True)
         self.room_table = numpy.matrix([[room1, room2, room3, room4], [room5, Room(), room7, room8],
                                         [room9, room10, room11, room12], [Room(), room14, room15, room16]], dtype=Room)
         self.hero = Hero(name, self.room_table[0, 2])
@@ -52,11 +54,16 @@ class World:
 
     def run_game(self):
         while not self.hero.get_room().get_is_win():
-            direction = self.hero.get_room().action_room()
+            direction = self.hero.get_room().action_room(self.hero)
             loc_room = numpy.where(self.room_table == self.hero.get_room())
             new_loc_room = move(direction, loc_room)
-            self.hero.move(self.room_table.item(new_loc_room[0][0], new_loc_room[1][0]))
-
+            new_room = self.room_table.item(new_loc_room[0][0], new_loc_room[1][0])
+            if new_room.verify_entry(self.hero.get_keys()):
+                self.hero.move(new_room)
+            else:
+                print('You need a key to go here !')
+                input('Press enter to continue...')
+        self.hero.get_room().display()
         print('You Win !')
 
 
