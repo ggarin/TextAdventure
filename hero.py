@@ -2,25 +2,27 @@ from room import Room
 
 
 class Hero:
-    def __init__(self, name='DefaultHero', room=Room()):
-        self.name = name
-        self.room = room
-        self.keys = []
+    def __init__(self, name: str='DefaultHero', room: Room=Room()):
+        self.__name = name
+        self.__current_room = room
+        self.__keys = []
 
     def display(self):
-        print(self.name + ' is in the room ' + self.room.get_name())
+        print(self.__name + ' is in the room ' + self.current_room.name)
 
-    def move(self, room):
-        self.room = room
+    def move(self, room: Room):
+        self.__current_room = room
 
     def pick_key(self):
-        if self.room.get_key() is not None:
+        if self.__current_room.key is not None:
             print('Key found:')
-            print('You found the ' + self.room.get_key().value + ' !')
-            self.keys.append(self.room.get_key())
+            print('You found the ' + self.__current_room.key.value + ' !')
+            self.__keys.append(self.__current_room.key)
 
-    def get_room(self):
-        return self.room
+    @property
+    def current_room(self):
+        return self.__current_room
 
-    def get_keys(self):
-        return self.keys
+    @property
+    def keys(self):
+        return self.__keys

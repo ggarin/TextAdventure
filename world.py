@@ -6,7 +6,7 @@ from keys import Keys
 
 
 class World:
-    def __init__(self, name=None):
+    def __init__(self, name: str=None):
         room3 = Room('Start', 'You just enter into a manor ! You are in a big room with a nice carpet. The door '
                               'behind you close itself. You now have to choose in three direction.',
                      Directions([Direction.WEST, Direction.NORTH, Direction.EAST]))
@@ -44,24 +44,25 @@ class World:
         room5 = Room('Bathroom', 'You open the door and find a bathroom. You discover the girl afraid and crying ! You '
                                  'saved here !',
                      Directions([Direction.EAST, Direction.SOUTH]), None, Keys.BATHROOM_KEY, True)
-        self.room_table = numpy.matrix([[room1, room2, room3, room4], [room5, Room(), room7, room8],
-                                        [room9, room10, room11, room12], [Room(), room14, room15, room16]], dtype=Room)
-        self.hero = Hero(name, self.room_table[0, 2])
+        self.__room_table = numpy.matrix([[room1, room2, room3, room4], [room5, Room(), room7, room8],
+                                          [room9, room10, room11, room12], [Room(), room14, room15, room16]],
+                                         dtype=Room)
+        self.__hero = Hero(name, self.__room_table[0, 2])
 
     def display(self):
-        room_shape = self.room_table.shape
+        room_shape = self.__room_table.shape
         print('The world contains ' + str(room_shape[0]*room_shape[1]) + ' rooms')
 
     def run_game(self):
-        while not self.hero.get_room().get_is_win():
-            direction = self.hero.get_room().action_room(self.hero)
-            loc_room = numpy.where(self.room_table == self.hero.get_room())
+        while not self.__hero.current_room.is_win:
+            direction = self.__hero.current_room.action_room(self.__hero)
+            loc_room: tuple = numpy.where(self.__room_table == self.__hero.current_room)
             new_loc_room = move(direction, loc_room)
-            new_room = self.room_table.item(new_loc_room[0][0], new_loc_room[1][0])
-            if new_room.verify_entry(self.hero.get_keys()):
-                self.hero.move(new_room)
+            new_room: Room = self.__room_table.item(new_loc_room[0][0], new_loc_room[1][0])
+            if new_room.verify_entry(self.__hero.keys):
+                self.__hero.move(new_room)
             else:
                 print('You need a key to go here !')
                 input('Press enter to continue...')
-        self.hero.get_room().display()
+        self.__hero.current_room.display()
         print('You Win !')
