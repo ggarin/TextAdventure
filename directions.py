@@ -36,6 +36,7 @@ class Directions:
 
 
 def move(direction, location):
+    new_location = ()
     if direction == Direction.NORTH:
         new_location = (location[0] + 1, location[1])
     elif direction == Direction.EAST:

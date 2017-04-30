@@ -2,8 +2,7 @@ from directions import Directions
 
 
 class Room:
-    # define a room
-    def __init__(self, name='DefaultRoom', description='DefaultDescription', directions=Directions(), is_win=False):
+    def __init__(self, name='Default Room', description='Default Description', directions=Directions(), is_win=False):
         self.name = name
         self.description = description
         self.directions = directions

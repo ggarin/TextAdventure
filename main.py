@@ -1,5 +1,3 @@
-from room import Room
-from hero import Hero
 from world import World
 
 

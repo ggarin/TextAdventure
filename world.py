@@ -8,7 +8,7 @@ import numpy
 
 class World:
     def __init__(self, name=None):
-        room1 = Room('Room1', 'First room', Directions([Direction.NORTH,Direction.EAST]))
+        room1 = Room('Room1', 'First room', Directions([Direction.NORTH, Direction.EAST]))
         room2 = Room('Room2', 'Second room', Directions([Direction.NORTH, Direction.WEST]))
         room3 = Room('Room3', 'Third room', Directions([Direction.SOUTH, Direction.EAST]))
         room4 = Room('Room4', 'Fourth room', Directions([Direction.SOUTH, Direction.WEST]), True)
@@ -24,7 +24,7 @@ class World:
             direction = self.hero.get_room().action_room()
             loc_room = numpy.where(self.room_table == self.hero.get_room())
             new_loc_room = move(direction, loc_room)
-            self.hero.move(self.room_table.item(new_loc_room[0][0],new_loc_room[1][0]))
+            self.hero.move(self.room_table.item(new_loc_room[0][0], new_loc_room[1][0]))
 
         print('You Win !')
 
