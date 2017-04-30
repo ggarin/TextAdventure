@@ -2,16 +2,16 @@ from room import Room
 
 
 class Hero:
-    def __init__(self):
-        self.name = 'DefaultHero'
-        self.room = Room()
+    def __init__(self, name = 'DefaultHero', room = Room()):
+        self.name = name
+        self.room = room
 
     def display(self):
         print(self.name + ' is in the room ' + self.room.get_name())
 
 
 def main():
-    my_hero = Hero()
+    my_hero = Hero('ThT12', Room())
     my_hero.display()
 
 
