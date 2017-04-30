@@ -13,6 +13,7 @@ class Room:
         self.__is_win = is_win
 
     def display(self):
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         print(self.__name)
         print('Description:')
         print(self.__description)
