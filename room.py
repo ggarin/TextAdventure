@@ -23,7 +23,7 @@ class Room:
         hero.pick_key()
         return self.__directions.ask_direction()
 
-    def verify_entry(self, keys: Keys):
+    def verify_entry(self, keys: [Keys]):
         if self.__condition is None:
             return True
         if self.__condition in keys:

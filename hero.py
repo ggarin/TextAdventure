@@ -13,6 +13,13 @@ class Hero:
     def move(self, room: Room):
         self.__current_room = room
 
+    def entry(self, room: Room):
+        if room.verify_entry(self.__keys):
+            self.move(room)
+        else:
+            print('You need a key to go here !')
+            input('Press enter to continue...')
+
     def pick_key(self):
         if self.__current_room.key is not None:
             print('Key found:')

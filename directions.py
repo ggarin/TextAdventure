@@ -33,7 +33,7 @@ class Directions:
         elif user_chose == 'W' or user_chose == 'West':
             direction_choose = Direction.WEST
         else:
-            raise ValueError('Bad direction')
+            raise ValueError('Unknown direction as input')
         if direction_choose not in self.__directions:
             raise ValueError('Impossible direction')
         return direction_choose

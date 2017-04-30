@@ -42,7 +42,7 @@ class World:
                                        'the south.',
                      Directions([Direction.EAST, Direction.SOUTH]))
         room5 = Room('Bathroom', 'You open the door and find a bathroom. You discover the girl afraid and crying ! You '
-                                 'saved here !',
+                                 'saved her!',
                      Directions([Direction.EAST, Direction.SOUTH]), None, Keys.BATHROOM_KEY, True)
         self.__room_table = numpy.matrix([[room1, room2, room3, room4], [room5, Room(), room7, room8],
                                           [room9, room10, room11, room12], [Room(), room14, room15, room16]],
@@ -59,10 +59,6 @@ class World:
             loc_room: tuple = numpy.where(self.__room_table == self.__hero.current_room)
             new_loc_room = move(direction, loc_room)
             new_room: Room = self.__room_table.item(new_loc_room[0][0], new_loc_room[1][0])
-            if new_room.verify_entry(self.__hero.keys):
-                self.__hero.move(new_room)
-            else:
-                print('You need a key to go here !')
-                input('Press enter to continue...')
+            self.__hero.entry(new_room)
         self.__hero.current_room.display()
         print('You Win !')
