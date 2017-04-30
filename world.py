@@ -1,5 +1,6 @@
 from room import Room
 from hero import Hero
+from directions import move
 import numpy
 
 
@@ -14,8 +15,10 @@ class World:
 
     def run_game(self):
         while not self.hero.get_room().get_is_win():
-            self.hero.get_room().action_room()
-            self.hero.get_room().is_win = True
+            direction = self.hero.get_room().action_room()
+            loc_room = numpy.where(self.room_table == self.hero.get_room())
+            new_loc_room = move(direction, loc_room)
+            self.hero.move(self.room_table.item(new_loc_room[0][0],new_loc_room[1][0]))
 
 
 def main():

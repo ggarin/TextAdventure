@@ -35,6 +35,18 @@ class Directions:
         raise ValueError('Bad direction')
 
 
+def move(direction, location):
+    if direction == Direction.NORTH:
+        new_location = (location[0] + 1, location[1])
+    elif direction == Direction.EAST:
+        new_location = (location[0], location[1] + 1)
+    elif direction == Direction.SOUTH:
+        new_location = (location[0] - 1, location[1])
+    elif direction == Direction.WEST:
+        new_location = (location[0], location[1] - 1)
+    return new_location
+
+
 def main():
     my_directions = Directions([Direction.NORTH, Direction.EAST])
     direction = my_directions.ask_direction()
