@@ -65,11 +65,3 @@ class World:
                 input('Press enter to continue...')
         self.hero.get_room().display()
         print('You Win !')
-
-
-def main():
-    my_world = World()
-    my_world.display()
-
-if __name__ == "__main__":
-    main()

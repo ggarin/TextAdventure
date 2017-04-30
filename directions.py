@@ -50,12 +50,3 @@ def move(direction, location):
     elif direction == Direction.WEST:
         new_location = (location[0], location[1] - 1)
     return new_location
-
-
-def main():
-    my_directions = Directions([Direction.NORTH, Direction.EAST])
-    direction = my_directions.ask_direction()
-    print(direction.value)
-
-if __name__ == "__main__":
-    main()

@@ -24,14 +24,3 @@ class Hero:
 
     def get_keys(self):
         return self.keys
-
-
-def main():
-    my_hero = Hero('ThT12', Room())
-    my_hero.display()
-    my_hero.move(Room("New_Room"))
-    my_hero.display()
-
-
-if __name__ == "__main__":
-    main()
