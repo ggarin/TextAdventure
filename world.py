@@ -14,10 +14,10 @@ class World:
                                 'a door in front of you or you can just go back.',
                      Directions([Direction.WEST, Direction.EAST]))
         room1 = Room('Closet', 'You found a closet with a lot of cooking stuff. You have to go back',
-                     Directions([Direction.EAST]))
+                     Directions([Direction.EAST]), Keys.DOM_ROOM_KEY)
         room4 = Room('Domestic Chamber', 'You enter into a small chamber with a simple bed and a piece of furniture and'
                                          ' a small window. There is a book on a chair close to the bed.',
-                     Directions([Direction.WEST]))
+                     Directions([Direction.WEST]), Keys.GUN, Keys.DOM_ROOM_KEY)
         room7 = Room('Living room', 'This is the first part of the living room. There is shelf on the wall  with a lot '
                                     'of books. You can explore the living room in two directions',
                      Directions([Direction.NORTH, Direction.EAST, Direction.SOUTH]))

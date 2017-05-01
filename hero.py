@@ -22,7 +22,7 @@ class Hero:
 
     def pick_key(self):
         if self.__current_room.key is not None:
-            print('Key found:')
+            print('Object found:')
             print('You found the ' + self.__current_room.key.value + ' !')
             self.__keys.append(self.__current_room.key)
 
