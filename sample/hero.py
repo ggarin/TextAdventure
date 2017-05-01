@@ -34,7 +34,7 @@ class Hero:
     def pick_key(self):
         if self.__current_room.key is not None:
             print('Object found:')
-            print('You found the ' + self.__current_room.key.value + ' !')
+            print('You found the ' + self.__current_room.key.value + '!')
             self.__inventory.append(self.__current_room.key)
             self.__current_room.delete_key()
 
@@ -64,7 +64,7 @@ class Hero:
             self.__current_room.delete_enemy()
         else:
             print('You have been defeated by the ' + self.__current_room.enemy.name + '!')
-            print('You are dead !')
+            print('You are dead!')
             self.__status = False
 
     @property

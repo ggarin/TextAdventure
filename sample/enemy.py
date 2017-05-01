@@ -10,6 +10,7 @@ class Enemy:
         return self.__kill_by == keys
 
     def display(self):
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         print('You meet the ' + self.__name + '!')
 
     @property

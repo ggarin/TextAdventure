@@ -43,7 +43,7 @@ class World:
         room9 = Room('Adults Chamber', 'A big room with a double bed. You can see a light passing though a door in '
                                        'the south.',
                      Directions([Direction.EAST, Direction.SOUTH]))
-        room5 = Room('Bathroom', 'You open the door and find a bathroom. You discover the girl afraid and crying ! You '
+        room5 = Room('Bathroom', 'You open the door and find a bathroom. You discover the girl afraid and crying! You '
                                  'saved her!',
                      Directions([Direction.EAST, Direction.SOUTH]), condition=Keys.BATHROOM_KEY, is_win=True)
         self.__room_table = numpy.matrix([[room1, room2, room3, room4], [room5, Room(), room7, room8],
@@ -66,6 +66,6 @@ class World:
             self.__hero.entry(new_room)
         if self.__hero.status:
             self.__hero.current_room.display()
-            print('You Win !')
+            print('You Win!')
         else:
-            print('You Loose !')
+            print('You Loose!')
