@@ -1,8 +1,9 @@
 import numpy
-from room import Room
-from hero import Hero
-from directions import Direction, Directions, move
-from keys import Keys
+
+from .directions import Direction, Directions, move
+from .hero import Hero
+from .keys import Keys
+from .room import Room
 
 
 class World:

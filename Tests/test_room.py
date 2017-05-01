@@ -1,9 +1,10 @@
 from unittest import TestCase
 from unittest.mock import patch
-from room import Room
-from hero import Hero
-from directions import Direction, Directions
-from keys import Keys
+
+from sample.directions import Direction, Directions
+from sample.hero import Hero
+from sample.keys import Keys
+from sample.room import Room
 
 
 class TestRoom(TestCase):

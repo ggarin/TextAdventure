@@ -1,5 +1,5 @@
-from directions import Directions
-from keys import Keys
+from .directions import Directions
+from .keys import Keys
 
 
 class Room:

@@ -1,6 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
-from directions import Direction, Directions
+
+from sample.directions import Direction, Directions
 
 
 class TestDirections(TestCase):
