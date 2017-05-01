@@ -5,7 +5,7 @@ class Hero:
     def __init__(self, name: str='DefaultHero', room: Room=Room()):
         self.__name = name
         self.__current_room = room
-        self.__keys = []
+        self.__inventory = []
 
     def display(self):
         print(self.__name + ' is in the room ' + self.current_room.name)
@@ -14,17 +14,17 @@ class Hero:
         self.__current_room = room
 
     def entry(self, room: Room):
-        if room.verify_entry(self.__keys):
+        if room.verify_entry(self.__inventory):
             self.move(room)
         else:
-            print('You need a key to go here !')
             input('Press enter to continue...')
 
     def pick_key(self):
         if self.__current_room.key is not None:
             print('Object found:')
             print('You found the ' + self.__current_room.key.value + ' !')
-            self.__keys.append(self.__current_room.key)
+            self.__inventory.append(self.__current_room.key)
+            # TODO: delete key in room
 
     @property
     def current_room(self):
@@ -32,4 +32,4 @@ class Hero:
 
     @property
     def keys(self):
-        return self.__keys
+        return self.__inventory

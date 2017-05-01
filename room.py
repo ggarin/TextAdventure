@@ -23,13 +23,29 @@ class Room:
         hero.pick_key()
         return self.__directions.ask_direction()
 
-    def verify_entry(self, keys: [Keys]):
+    def verify_entry(self, inventory: [Keys]):
         if self.__condition is None:
             return True
-        if self.__condition in keys:
-            print('You open the door with the ' + self.__condition.value + '!')
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print('The door is closed.')
+        if not inventory:
+            print('You have nothing on you to open the door.')
+            return False
+        print('What do you want to use?')
+        for iInv in range(len(inventory)):
+            print(str(iInv+1) + ' - ' + inventory[iInv].value)
+        while True:
+            try:
+                choice = inventory[int(input())-1]
+                break
+            except (ValueError, IndexError):
+                print('Invalid object')
+        if self.__condition == choice:
+            print('You open the door with the ' + choice.value + '!')
             return True
-        return False
+        else:
+            print('Nothing happen!')
+            return False
 
     @property
     def key(self):

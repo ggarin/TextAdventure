@@ -14,17 +14,33 @@ class TestRoom(TestCase):
         self.assertEqual(my_room.action_room(my_hero), Direction.NORTH)
         self.assertTrue(Keys.BATHROOM_KEY in my_hero.keys)
 
-    def test_verify_entry_no_key(self):
+    def test_verify_entry_no_key_needed(self):
         my_room = Room()
         keys = []
         self.assertTrue(my_room.verify_entry(keys))
 
-    def test_verify_entry_good_key(self):
+    def test_verify_entry_key_needed_no_inventory(self):
+        my_room = Room('Init Room', 'des', Directions(), None, Keys.BATHROOM_KEY)
+        keys = []
+        self.assertFalse(my_room.verify_entry(keys))
+
+    @patch('builtins.input')
+    def test_verify_entry_key_needed_good_key_selected(self, mock_input):
+        mock_input.return_value = 1
         my_room = Room('Init Room', 'des', Directions(), None, Keys.BATHROOM_KEY)
         keys = [Keys.BATHROOM_KEY, Keys.RANDOM_KEY]
         self.assertTrue(my_room.verify_entry(keys))
 
-    def test_verify_entry_bad_key(self):
+    @patch('builtins.input')
+    def test_verify_entry_key_needed_bad_key_selected(self, mock_input):
+        mock_input.return_value = 2
         my_room = Room('Init Room', 'des', Directions(), None, Keys.BATHROOM_KEY)
-        keys = [Keys.RANDOM_KEY]
+        keys = [Keys.BATHROOM_KEY, Keys.RANDOM_KEY]
         self.assertFalse(my_room.verify_entry(keys))
+
+    @patch('builtins.input')
+    def test_verify_entry_key_needed_good_key_selected_after_mistakes(self, mock_input):
+        mock_input.side_effect = ['a', 12, 1]
+        my_room = Room('Init Room', 'des', Directions(), None, Keys.BATHROOM_KEY)
+        keys = [Keys.BATHROOM_KEY, Keys.RANDOM_KEY]
+        self.assertTrue(my_room.verify_entry(keys))
