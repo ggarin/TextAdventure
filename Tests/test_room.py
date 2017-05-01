@@ -2,7 +2,6 @@ from unittest import TestCase
 from unittest.mock import patch
 
 from sample.directions import Direction, Directions
-from sample.hero import Hero
 from sample.keys import Keys
 from sample.room import Room
 
@@ -11,7 +10,6 @@ class TestRoom(TestCase):
     @patch('builtins.input', lambda: 'N')
     def test_action_room(self):
         my_room = Room('Init Room', 'des', Directions(), Keys.BATHROOM_KEY)
-        my_hero = Hero('TU', my_room)
         self.assertEqual(my_room.action_room(), Direction.NORTH)
 
     def test_verify_entry_no_key_needed(self):

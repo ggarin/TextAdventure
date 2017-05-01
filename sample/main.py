@@ -1,4 +1,4 @@
-from .world import World
+from sample.world import World
 
 
 print('Welcome to Text Adventure Game - v0.1')
