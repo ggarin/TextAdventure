@@ -23,19 +23,27 @@ class Directions:
                 print(iDirection.value)
             else:
                 print('or ' + iDirection.value)
-        user_chose = input()
-        if user_chose == 'N' or user_chose == 'North':
-            direction_choose = Direction.NORTH
-        elif user_chose == 'E' or user_chose == 'East':
-            direction_choose = Direction.EAST
-        elif user_chose == 'S' or user_chose == 'South':
-            direction_choose = Direction.SOUTH
-        elif user_chose == 'W' or user_chose == 'West':
-            direction_choose = Direction.WEST
-        else:
-            raise ValueError('Unknown direction as input')
-        if direction_choose not in self.__directions:
-            raise ValueError('Impossible direction')
+        valid_input = False
+        direction_choose: Direction
+        while not valid_input:
+            user_chose = input()
+            if user_chose == 'N' or user_chose == 'North':
+                direction_choose = Direction.NORTH
+            elif user_chose == 'E' or user_chose == 'East':
+                direction_choose = Direction.EAST
+            elif user_chose == 'S' or user_chose == 'South':
+                direction_choose = Direction.SOUTH
+            elif user_chose == 'W' or user_chose == 'West':
+                direction_choose = Direction.WEST
+            else:
+                valid_input = False
+                print('Unknown direction input. Please, try again!')
+                continue
+            if direction_choose not in self.__directions:
+                valid_input = False
+                print('You cannot go in this direction. Please, choose another direction!')
+            else:
+                valid_input = True
         return direction_choose
 
 

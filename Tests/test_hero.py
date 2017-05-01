@@ -34,14 +34,14 @@ class TestHero(TestCase):
 
     def test_pick_key_with_key(self):
         my_hero = Hero('UT', Room('Init Room', 'des', Directions(), Keys.BATHROOM_KEY))
-        self.assertTrue(Keys.BATHROOM_KEY not in my_hero.keys)
+        self.assertNotIn(Keys.BATHROOM_KEY, my_hero.keys)
         my_hero.pick_key()
-        self.assertTrue(Keys.BATHROOM_KEY in my_hero.keys)
+        self.assertIn(Keys.BATHROOM_KEY, my_hero.keys)
 
     def test_pick_key_without_key(self):
         my_hero = Hero('UT', Room('Init Room', 'des', Directions(), None))
-        self.assertTrue(Keys.BATHROOM_KEY not in my_hero.keys)
+        self.assertNotIn(Keys.BATHROOM_KEY, my_hero.keys)
         my_hero.pick_key()
-        self.assertTrue(Keys.BATHROOM_KEY not in my_hero.keys)
+        self.assertNotIn(Keys.BATHROOM_KEY, my_hero.keys)
 
 

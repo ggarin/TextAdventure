@@ -41,15 +41,17 @@ class TestDirections(TestCase):
         self.assertEqual(self.my_direction.ask_direction(), Direction.WEST)
 
 
-class ExceptionTest(TestCase):
+class TestDirectionsTwice(TestCase):
 
     def setUp(self):
         self.my_direction = Directions([Direction.WEST, Direction.NORTH])
 
-    @patch('builtins.input', lambda: 'B')
-    def test_ask_direction_unknown_direction(self):
-        self.assertRaises(ValueError, self.my_direction.ask_direction)
+    @patch('builtins.input')
+    def test_ask_direction_unknown_direction(self, mock_input):
+        mock_input.side_effect = ['B', 'N']
+        self.assertEqual(self.my_direction.ask_direction(), Direction.NORTH)
 
-    @patch('builtins.input', lambda: 'S')
-    def test_ask_direction_impossible_direction(self):
-        self.assertRaises(ValueError, self.my_direction.ask_direction)
+    @patch('builtins.input')
+    def test_ask_direction_unknown_direction(self, mock_input):
+        mock_input.side_effect = ['E','N']
+        self.assertEqual(self.my_direction.ask_direction(), Direction.NORTH)
