@@ -27,13 +27,13 @@ class Directions:
         direction_choose: Direction
         while not valid_input:
             user_chose = input()
-            if user_chose == 'N' or user_chose == 'North':
+            if user_chose in ['N', 'North']:
                 direction_choose = Direction.NORTH
-            elif user_chose == 'E' or user_chose == 'East':
+            elif user_chose in ['E', 'East']:
                 direction_choose = Direction.EAST
-            elif user_chose == 'S' or user_chose == 'South':
+            elif user_chose in ['S', 'South']:
                 direction_choose = Direction.SOUTH
-            elif user_chose == 'W' or user_chose == 'West':
+            elif user_chose in ['W', 'West']:
                 direction_choose = Direction.WEST
             else:
                 valid_input = False

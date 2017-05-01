@@ -52,6 +52,11 @@ class TestDirectionsTwice(TestCase):
         self.assertEqual(self.my_direction.ask_direction(), Direction.NORTH)
 
     @patch('builtins.input')
-    def test_ask_direction_unknown_direction(self, mock_input):
+    def test_ask_direction_blocked_direction(self, mock_input):
         mock_input.side_effect = ['E','N']
         self.assertEqual(self.my_direction.ask_direction(), Direction.NORTH)
+
+    @patch('builtins.input')
+    def test_ask_direction_first_direction(self, mock_input):
+        mock_input.side_effect = ['W', 'N']
+        self.assertEqual(self.my_direction.ask_direction(), Direction.WEST)

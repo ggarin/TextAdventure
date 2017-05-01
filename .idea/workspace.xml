@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2400fa47-7179-4b83-bb39-1d6244ddd9e6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tests/test_directions.py" afterPath="$PROJECT_DIR$/Tests/test_directions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tests/test_hero.py" afterPath="$PROJECT_DIR$/Tests/test_hero.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/directions.py" afterPath="$PROJECT_DIR$/directions.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,8 +62,8 @@
       <file leaf-file-name="directions.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/directions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="34" column="50" lean-forward="true" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+            <state relative-caret-position="119">
+              <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -84,7 +82,7 @@
       <file leaf-file-name="test_directions.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Tests/test_directions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
+            <state relative-caret-position="309">
               <caret line="53" column="28" lean-forward="true" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
@@ -147,8 +145,8 @@
         <option value="$PROJECT_DIR$/keys.py" />
         <option value="$PROJECT_DIR$/world.py" />
         <option value="$PROJECT_DIR$/hero.py" />
-        <option value="$PROJECT_DIR$/directions.py" />
         <option value="$PROJECT_DIR$/Tests/test_hero.py" />
+        <option value="$PROJECT_DIR$/directions.py" />
         <option value="$PROJECT_DIR$/Tests/test_directions.py" />
       </list>
     </option>
@@ -263,51 +261,6 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests in test_hero.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tests" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TextAdventure" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/Tests/test_hero.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests for test_hero.TestHero.test_pick_key_with_key" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tests" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TextAdventure" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_hero.TestHero.test_pick_key_with_key&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests for test_directions.ExceptionTest.test_ask_direction_unknown_direction" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tests" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TextAdventure" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_directions.ExceptionTest.test_ask_direction_unknown_direction&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method />
-    </configuration>
     <configuration default="false" name="Unittests in test_directions.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -321,6 +274,51 @@
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/Tests/test_directions.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests for test_directions.TestDirectionsTwice.setUp" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tests" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TextAdventure" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_directions.TestDirectionsTwice.setUp&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests for test_directions.TestDirectionsTwice" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tests" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TextAdventure" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_directions.TestDirectionsTwice&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests for test_directions.TestDirectionsTwice.test_ask_direction_unknown_direction" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tests" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TextAdventure" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_directions.TestDirectionsTwice.test_ask_direction_unknown_direction&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -389,18 +387,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in Tests" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in test_hero.py" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_hero.TestHero.test_pick_key_with_key" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_directions.ExceptionTest.test_ask_direction_unknown_direction" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in test_directions.py" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in test_directions.py" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_directions.TestDirectionsTwice.setUp" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_directions.TestDirectionsTwice" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_directions.TestDirectionsTwice.test_ask_direction_unknown_direction" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in Tests" />
         <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in test_directions.py" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_directions.ExceptionTest.test_ask_direction_unknown_direction" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in test_hero.py" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_hero.TestHero.test_pick_key_with_key" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_directions.TestDirectionsTwice" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_directions.TestDirectionsTwice.test_ask_direction_unknown_direction" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_directions.TestDirectionsTwice.setUp" />
       </list>
     </recent_temporary>
   </component>
@@ -418,34 +416,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_directions_ExceptionTest_test_ask_direction_unknown_direction - 2017.05.01 at 15h 49m 38s.xml">
-      <configuration name="Unittests for test_directions.ExceptionTest.test_ask_direction_unknown_direction" configurationId="tests" />
+    <history-entry file="Unittests_for_test_directions_TestDirectionsTwice - 2017.05.01 at 15h 58m 58s.xml">
+      <configuration name="Unittests for test_directions.TestDirectionsTwice" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_directions_ExceptionTest_test_ask_direction_unknown_direction - 2017.05.01 at 15h 52m 48s.xml">
-      <configuration name="Unittests for test_directions.ExceptionTest.test_ask_direction_unknown_direction" configurationId="tests" />
+    <history-entry file="Unittests_for_test_directions_TestDirectionsTwice - 2017.05.01 at 16h 00m 43s.xml">
+      <configuration name="Unittests for test_directions.TestDirectionsTwice" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_directions_ExceptionTest_test_ask_direction_unknown_direction - 2017.05.01 at 15h 52m 58s.xml">
-      <configuration name="Unittests for test_directions.ExceptionTest.test_ask_direction_unknown_direction" configurationId="tests" />
+    <history-entry file="Unittests_for_test_directions_TestDirectionsTwice_test_ask_direction_unknown_direction - 2017.05.01 at 15h 59m 00s.xml">
+      <configuration name="Unittests for test_directions.TestDirectionsTwice.test_ask_direction_unknown_direction" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_directions_ExceptionTest_test_ask_direction_unknown_direction - 2017.05.01 at 15h 54m 16s.xml">
-      <configuration name="Unittests for test_directions.ExceptionTest.test_ask_direction_unknown_direction" configurationId="tests" />
+    <history-entry file="Unittests_for_test_directions_TestDirectionsTwice_test_ask_direction_unknown_direction - 2017.05.01 at 15h 59m 56s.xml">
+      <configuration name="Unittests for test_directions.TestDirectionsTwice.test_ask_direction_unknown_direction" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_directions_ExceptionTest_test_ask_direction_unknown_direction - 2017.05.01 at 15h 54m 29s.xml">
-      <configuration name="Unittests for test_directions.ExceptionTest.test_ask_direction_unknown_direction" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_directions_ExceptionTest_test_ask_direction_unknown_direction - 2017.05.01 at 15h 54m 40s.xml">
-      <configuration name="Unittests for test_directions.ExceptionTest.test_ask_direction_unknown_direction" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_directions_ExceptionTest_test_ask_direction_unknown_direction - 2017.05.01 at 15h 54m 42s.xml">
-      <configuration name="Unittests for test_directions.ExceptionTest.test_ask_direction_unknown_direction" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_directions_ExceptionTest_test_ask_direction_unknown_direction - 2017.05.01 at 15h 55m 04s.xml">
-      <configuration name="Unittests for test_directions.ExceptionTest.test_ask_direction_unknown_direction" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_Tests - 2017.05.01 at 15h 56m 14s.xml">
+    <history-entry file="Unittests_in_Tests - 2017.05.01 at 15h 59m 07s.xml">
       <configuration name="Unittests in Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_directions_py - 2017.05.01 at 15h 56m 00s.xml">
+    <history-entry file="Unittests_in_Tests - 2017.05.01 at 15h 59m 17s.xml">
+      <configuration name="Unittests in Tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_Tests - 2017.05.01 at 16h 00m 52s.xml">
+      <configuration name="Unittests in Tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_directions_py - 2017.05.01 at 15h 59m 32s.xml">
+      <configuration name="Unittests in test_directions.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_directions_py - 2017.05.01 at 15h 59m 43s.xml">
+      <configuration name="Unittests in test_directions.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_directions_py - 2017.05.01 at 16h 00m 47s.xml">
       <configuration name="Unittests in test_directions.py" configurationId="tests" />
     </history-entry>
   </component>
@@ -456,7 +454,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18656716" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294979" sideWeight="0.2078125" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3376206" sideWeight="0.7921875" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3376206" sideWeight="0.7921875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -837,15 +835,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/directions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="34" column="50" lean-forward="true" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+        <state relative-caret-position="119">
+          <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/test_directions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
+        <state relative-caret-position="309">
           <caret line="53" column="28" lean-forward="true" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
