@@ -11,8 +11,7 @@ class TestRoom(TestCase):
     def test_action_room(self):
         my_room = Room('Init Room', 'des', Directions(), Keys.BATHROOM_KEY)
         my_hero = Hero('TU', my_room)
-        self.assertEqual(my_room.action_room(my_hero), Direction.NORTH)
-        self.assertTrue(Keys.BATHROOM_KEY in my_hero.keys)
+        self.assertEqual(my_room.action_room(), Direction.NORTH)
 
     def test_verify_entry_no_key_needed(self):
         my_room = Room()

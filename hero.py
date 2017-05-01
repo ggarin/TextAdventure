@@ -19,6 +19,11 @@ class Hero:
         else:
             input('Press enter to continue...')
 
+    def action(self):
+        self.current_room.display()
+        self.pick_key()
+        return self.current_room.action_room()
+
     def pick_key(self):
         if self.__current_room.key is not None:
             print('Object found:')

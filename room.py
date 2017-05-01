@@ -18,9 +18,7 @@ class Room:
         print('Description:')
         print(self.__description)
 
-    def action_room(self, hero):
-        self.display()
-        hero.pick_key()
+    def action_room(self):
         return self.__directions.ask_direction()
 
     def verify_entry(self, inventory: [Keys]):

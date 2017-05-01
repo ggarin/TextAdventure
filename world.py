@@ -55,7 +55,7 @@ class World:
 
     def run_game(self):
         while not self.__hero.current_room.is_win:
-            direction = self.__hero.current_room.action_room(self.__hero)
+            direction = self.__hero.action()
             loc_room: tuple = numpy.where(self.__room_table == self.__hero.current_room)
             new_loc_room = move(direction, loc_room)
             new_room: Room = self.__room_table.item(new_loc_room[0][0], new_loc_room[1][0])

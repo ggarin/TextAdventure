@@ -2,7 +2,7 @@ from unittest import TestCase
 from unittest.mock import patch
 from hero import Hero
 from room import Room
-from directions import Directions
+from directions import Directions, Direction
 from keys import Keys
 
 
@@ -31,6 +31,13 @@ class TestHero(TestCase):
         move_room = Room('Move room')
         my_hero.entry(move_room)
         self.assertEqual(my_hero.current_room, init_room)
+
+    @patch('builtins.input')
+    def test_action(self, mock_input):
+        mock_input.return_value = 'N'
+        my_hero = Hero('UT', Room('Init Room', 'des', Directions(), Keys.BATHROOM_KEY))
+        self.assertEqual(Direction.NORTH, my_hero.action())
+        self.assertIn(Keys.BATHROOM_KEY, my_hero.keys)
 
     def test_pick_key_with_key(self):
         my_hero = Hero('UT', Room('Init Room', 'des', Directions(), Keys.BATHROOM_KEY))
