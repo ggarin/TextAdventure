@@ -44,3 +44,8 @@ class TestRoom(TestCase):
         my_room = Room('Init Room', 'des', Directions(), None, Keys.BATHROOM_KEY)
         keys = [Keys.BATHROOM_KEY, Keys.RANDOM_KEY]
         self.assertTrue(my_room.verify_entry(keys))
+
+    def test_delete_key(self):
+        my_room = Room('Init Room', 'des', Directions(), None, Keys.BATHROOM_KEY)
+        my_room.delete_key()
+        self.assertIsNone(my_room.key)

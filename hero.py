@@ -24,7 +24,7 @@ class Hero:
             print('Object found:')
             print('You found the ' + self.__current_room.key.value + ' !')
             self.__inventory.append(self.__current_room.key)
-            # TODO: delete key in room
+            self.__current_room.delete_key()
 
     @property
     def current_room(self):

@@ -47,6 +47,9 @@ class Room:
             print('Nothing happen!')
             return False
 
+    def delete_key(self):
+        self.__key = None
+
     @property
     def key(self):
         return self.__key

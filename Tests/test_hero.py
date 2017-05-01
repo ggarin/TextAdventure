@@ -37,6 +37,7 @@ class TestHero(TestCase):
         self.assertNotIn(Keys.BATHROOM_KEY, my_hero.keys)
         my_hero.pick_key()
         self.assertIn(Keys.BATHROOM_KEY, my_hero.keys)
+        self.assertIsNone(my_hero.current_room.key)
 
     def test_pick_key_without_key(self):
         my_hero = Hero('UT', Room('Init Room', 'des', Directions(), None))
