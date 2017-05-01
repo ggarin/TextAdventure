@@ -43,5 +43,3 @@ class TestHero(TestCase):
         self.assertNotIn(Keys.BATHROOM_KEY, my_hero.keys)
         my_hero.pick_key()
         self.assertNotIn(Keys.BATHROOM_KEY, my_hero.keys)
-
-
