@@ -1,15 +1,18 @@
 from .directions import Directions
 from .keys import Keys
+from .enemy import Enemy
 
 
 class Room:
     def __init__(self, name: str='Default Room', description: str='Default Description',
-                 directions: Directions=Directions(), key: Keys=None, condition: Keys=None, is_win: bool=False):
+                 directions: Directions=Directions(), key: Keys=None, condition: Keys=None, is_win: bool=False,
+                 enemy: Enemy=None):
         self.__name = name
         self.__description = description
         self.__directions = directions
         self.__key = key
         self.__condition = condition
+        self.__enemy = enemy
         self.__is_win = is_win
 
     def display(self):
@@ -48,6 +51,9 @@ class Room:
     def delete_key(self):
         self.__key = None
 
+    def delete_enemy(self):
+        self.__enemy = None
+
     @property
     def key(self):
         return self.__key
@@ -59,3 +65,7 @@ class Room:
     @property
     def is_win(self):
         return self.__is_win
+
+    @property
+    def enemy(self):
+        return self.__enemy
