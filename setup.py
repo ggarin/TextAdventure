@@ -1,10 +1,15 @@
 from setuptools import setup, find_packages
+from codecs import open
+
 
 with open('README.rst') as f:
     readme = f.read()
 
 with open('LICENSE') as f:
     my_license = f.read()
+
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
 
 setup(
     name='TextAdventure',
@@ -23,5 +28,10 @@ setup(
     ],
     keywords='discover python language',
     packages=find_packages(exclude=['tests']),
-    install_requires=['numpy']
+    install_requires=required,
+    entry_points={
+        'console_scripts': [
+            'play_text_adventure=textadventure.adventure:main',
+        ],
+    },
 )

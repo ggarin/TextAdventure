@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from sample.enemy import Enemy
-from sample.keys import Keys
+from textadventure.enemy import Enemy
+from textadventure.keys import Keys
 
 
 class TestEnemy(TestCase):

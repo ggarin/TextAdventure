@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from sample.directions import Direction, Directions
+from textadventure.directions import Direction, Directions
 
 
 class TestDirections(TestCase):

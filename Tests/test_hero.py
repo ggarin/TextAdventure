@@ -1,11 +1,11 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from sample.directions import Direction
-from sample.hero import Hero
-from sample.keys import Keys
-from sample.room import Room
-from sample.enemy import Enemy
+from textadventure.directions import Direction
+from textadventure.hero import Hero
+from textadventure.keys import Keys
+from textadventure.room import Room
+from textadventure.enemy import Enemy
 
 
 class TestHero(TestCase):

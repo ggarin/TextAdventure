@@ -1,0 +1,5 @@
+/.idea/
+__pycache__/
+TextAdventure.egg-info/
+build/
+dist/
