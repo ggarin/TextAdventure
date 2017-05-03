@@ -9,7 +9,7 @@ from .enemy import Enemy
 
 class World:
     def __init__(self, name: str=None):
-        room3 = Room('Start', 'You just enter into a manor ! You are in a big room with a nice carpet. The door '
+        room3 = Room('Start', 'You just enter into a manor! You are in a big room with a nice carpet. The door '
                               'behind you close itself. You now have to choose in three direction.',
                      Directions([Direction.WEST, Direction.NORTH, Direction.EAST]))
         room2 = Room('Kitchen', 'You enter into a kitchen. Some meal are under preparation but no one is here. You see '
@@ -37,7 +37,8 @@ class World:
         room15 = Room('Stairs', 'Some dark stairs are going down to a toilet.',
                       Directions([Direction.SOUTH]))
         room10 = Room('Hallway', 'A simple hallway with chandelier give access to two rooms.',
-                      Directions([Direction.WEST, Direction.NORTH, Direction.EAST]), enemy=Enemy('Zombie', Keys.GUN))
+                      Directions([Direction.WEST, Direction.NORTH, Direction.EAST]),
+                      enemy=Enemy('Zombie', Keys.GUN, 'A Zombie come from the North and jump on you!'))
         room14 = Room('Children Chamber', 'An empty children chamber with a lot of toys on the floor.',
                       Directions([Direction.SOUTH]))
         room9 = Room('Adults Chamber', 'A big room with a double bed. You can see a light passing though a door in '

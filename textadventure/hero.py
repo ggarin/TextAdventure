@@ -40,6 +40,7 @@ class Hero:
 
     def defeat_enemy(self):
         # TODO: Refactor with room.verify_entry
+        print('What do you want to use to fight him?')
         for iInv in range(len(self.__inventory)):
             print(str(iInv+1) + ' - ' + self.__inventory[iInv].value)
         print(str(len(self.__inventory)+1) + ' - Punch')
