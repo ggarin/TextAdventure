@@ -2,10 +2,10 @@ from enum import Enum
 
 
 class Direction(str, Enum):
-    NORTH = 'North (N)'
-    EAST = 'East (E)'
-    SOUTH = 'South (S)'
-    WEST = 'West (W)'
+    NORTH = 'N - North'
+    EAST = 'E - East'
+    SOUTH = 'S - South'
+    WEST = 'W - West'
 
 
 class Directions:
@@ -16,13 +16,8 @@ class Directions:
 
     def ask_direction(self):
         print('Where do you want to go ?')
-        first = True
         for iDirection in self.__directions:
-            if first:
-                first = False
-                print(iDirection.value)
-            else:
-                print('or ' + iDirection.value)
+            print(iDirection.value)
         valid_input = False
         direction_choose: Direction
         while not valid_input:
