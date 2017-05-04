@@ -1,17 +1,17 @@
 from .directions import Directions
-from .keys import Keys
+from .obj import Obj
 from .enemy import Enemy
 
 
 class Room:
     def __init__(self, name: str='Default Room', description: str='Default Description',
-                 directions: Directions=Directions(), key: Keys=None, condition: Keys=None, is_win: bool=False,
-                 enemy: Enemy=None):
+                 directions: Directions=Directions(), obj_in_room: Obj=None, condition_to_enter: Obj=None,
+                 is_win: bool=False, enemy: Enemy=None):
         self.name = name
         self.description = description
         self.directions = directions
-        self.key = key
-        self.condition = condition
+        self.obj_in_room = obj_in_room
+        self.condition_to_enter = condition_to_enter
         self.enemy = enemy
         self.is_win = is_win
 
@@ -24,8 +24,8 @@ class Room:
     def action_room(self):
         return self.directions.ask_direction()
 
-    def verify_entry(self, inventory: [Keys]):
-        if self.condition is None:
+    def verify_entry(self, inventory: [Obj]):
+        if self.condition_to_enter is None:
             return True
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         print('The door is closed.')
@@ -41,15 +41,15 @@ class Room:
                 break
             except (ValueError, IndexError):
                 print('Invalid object')
-        if self.condition == choice:
+        if self.condition_to_enter == choice:
             print('You open the door with the ' + choice.value + '!')
             return True
         else:
             print('Nothing happen!')
             return False
 
-    def delete_key(self):
-        self.key = None
+    def delete_obj(self):
+        self.obj_in_room = None
 
     def delete_enemy(self):
         self.enemy = None

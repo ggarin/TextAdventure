@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 from textadventure.directions import Direction
 from textadventure.hero import Hero
-from textadventure.keys import Keys
+from textadventure.obj import Obj
 from textadventure.room import Room
 from textadventure.enemy import Enemy
 
@@ -37,50 +37,50 @@ class TestHero(TestCase):
     @patch('builtins.input')
     def test_action_not_dead(self, mock_input):
         mock_input.return_value = 'N'
-        my_hero = Hero(room=Room(key=Keys.BATHROOM_KEY))
+        my_hero = Hero(room=Room(obj_in_room=Obj.BATHROOM_KEY))
         self.assertEqual(Direction.NORTH, my_hero.action())
-        self.assertIn(Keys.BATHROOM_KEY, my_hero.inventory)
+        self.assertIn(Obj.BATHROOM_KEY, my_hero.inventory)
 
     def test_action_dead(self):
-        my_hero = Hero(room=Room(key=Keys.BATHROOM_KEY))
+        my_hero = Hero(room=Room(obj_in_room=Obj.BATHROOM_KEY))
         my_hero.status = False
         self.assertIsNone(my_hero.action())
 
     def test_pick_key_with_key(self):
-        my_hero = Hero(room=Room(key=Keys.BATHROOM_KEY))
-        self.assertNotIn(Keys.BATHROOM_KEY, my_hero.inventory)
-        my_hero.pick_key()
-        self.assertIn(Keys.BATHROOM_KEY, my_hero.inventory)
-        self.assertIsNone(my_hero.current_room.key)
+        my_hero = Hero(room=Room(obj_in_room=Obj.BATHROOM_KEY))
+        self.assertNotIn(Obj.BATHROOM_KEY, my_hero.inventory)
+        my_hero.pick_obj()
+        self.assertIn(Obj.BATHROOM_KEY, my_hero.inventory)
+        self.assertIsNone(my_hero.current_room.obj_in_room)
 
     def test_pick_key_without_key(self):
-        my_hero = Hero(room=Room(key=None))
-        self.assertNotIn(Keys.BATHROOM_KEY, my_hero.inventory)
-        my_hero.pick_key()
-        self.assertNotIn(Keys.BATHROOM_KEY, my_hero.inventory)
+        my_hero = Hero(room=Room(obj_in_room=None))
+        self.assertNotIn(Obj.BATHROOM_KEY, my_hero.inventory)
+        my_hero.pick_obj()
+        self.assertNotIn(Obj.BATHROOM_KEY, my_hero.inventory)
 
     @patch('builtins.input')
     def test_defeat_enemy_when_enemy(self, mock_input):
         mock_input.return_value = 1
-        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Keys.GUN)), inventory=[Keys.GUN])
+        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Obj.GUN)), inventory=[Obj.GUN])
         self.assertTrue(my_hero.defeat_enemy())
 
     @patch('builtins.input')
     def test_defeat_enemy_when_enemy_no_inventory(self, mock_input):
         mock_input.return_value = 1
-        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Keys.GUN)), inventory=[])
+        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Obj.GUN)), inventory=[])
         self.assertFalse(my_hero.defeat_enemy())
 
     @patch('builtins.input')
     def test_defeat_enemy_when_enemy_bad_inventory(self, mock_input):
         mock_input.return_value = 1
-        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Keys.GUN)), inventory=[Keys.RANDOM_KEY])
+        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Obj.GUN)), inventory=[Obj.RANDOM_KEY])
         self.assertFalse(my_hero.defeat_enemy())
 
     @patch('builtins.input')
     def test_defeat_enemy_when_enemy_bad_choice(self, mock_input):
         mock_input.side_effect = [12, 1]
-        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Keys.GUN)), inventory=[Keys.GUN])
+        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Obj.GUN)), inventory=[Obj.GUN])
         self.assertTrue(my_hero.defeat_enemy())
 
     def test_meet_enemy_when_no_enemy(self):
@@ -90,7 +90,7 @@ class TestHero(TestCase):
     @patch.object(Hero, "defeat_enemy")
     def test_meet_enemy_when_win_fight(self, mock_defeat_enemy):
         mock_defeat_enemy.return_value = True
-        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Keys.GUN)))
+        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Obj.GUN)))
         my_hero.meet_enemy()
         self.assertTrue(my_hero.status)
         self.assertIsNone(my_hero.current_room.enemy)
@@ -98,7 +98,7 @@ class TestHero(TestCase):
     @patch.object(Hero, "defeat_enemy")
     def test_meet_enemy_when_loose_fight(self, mock_defeat_enemy):
         mock_defeat_enemy.return_value = False
-        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Keys.GUN)))
+        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Obj.GUN)))
         my_hero.meet_enemy()
         self.assertFalse(my_hero.status)
         self.assertIsNotNone(my_hero.current_room.enemy)

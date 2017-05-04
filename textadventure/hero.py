@@ -1,5 +1,5 @@
 from .room import Room
-from .keys import Keys
+from .obj import Obj
 
 
 class Hero:
@@ -28,15 +28,15 @@ class Hero:
         if not self.status:
             return None
         self.current_room.display()
-        self.pick_key()
+        self.pick_obj()
         return self.current_room.action_room()
 
-    def pick_key(self):
-        if self.current_room.key is not None:
+    def pick_obj(self):
+        if self.current_room.obj_in_room is not None:
             print('Object found:')
-            print('You found the ' + self.current_room.key.value + '!')
-            self.inventory.append(self.current_room.key)
-            self.current_room.delete_key()
+            print('You found the ' + self.current_room.obj_in_room.value + '!')
+            self.inventory.append(self.current_room.obj_in_room)
+            self.current_room.delete_obj()
 
     def defeat_enemy(self):
         # TODO: Refactor with room.verify_entry
@@ -48,7 +48,7 @@ class Hero:
             try:
                 choice = int(input()) - 1
                 if choice == len(self.inventory):
-                    choice = Keys.PUNCH
+                    choice = Obj.PUNCH
                 else:
                     choice = self.inventory[choice]
                 break
