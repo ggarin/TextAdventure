@@ -1,12 +1,14 @@
-from .directions import Directions
+from .directions import Direction
 from .obj import Obj
 from .enemy import Enemy
 
 
 class Room:
     def __init__(self, name: str='Default Room', description: str='Default Description',
-                 directions: Directions=Directions(), obj_in_room: Obj=None, condition_to_enter: Obj=None,
+                 directions: [Direction]=None, obj_in_room: Obj=None, condition_to_enter: Obj=None,
                  is_win: bool=False, enemy: Enemy=None):
+        if directions is None:
+            directions = [Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST]
         self.name = name
         self.description = description
         self.directions = directions
@@ -22,7 +24,31 @@ class Room:
         print(self.description)
 
     def action_room(self):
-        return self.directions.ask_direction()
+        print('Where do you want to go ?')
+        for iDirection in self.directions:
+            print(iDirection.value)
+        valid_input = False
+        direction_choose: Direction
+        while not valid_input:
+            user_chose = input()
+            if user_chose in ['N', 'North']:
+                direction_choose = Direction.NORTH
+            elif user_chose in ['E', 'East']:
+                direction_choose = Direction.EAST
+            elif user_chose in ['S', 'South']:
+                direction_choose = Direction.SOUTH
+            elif user_chose in ['W', 'West']:
+                direction_choose = Direction.WEST
+            else:
+                valid_input = False
+                print('Unknown direction input. Please, try again!')
+                continue
+            if direction_choose not in self.directions:
+                valid_input = False
+                print('You cannot go in this direction. Please, choose another direction!')
+            else:
+                valid_input = True
+        return direction_choose
 
     def verify_entry(self, inventory: [Obj]):
         if self.condition_to_enter is None:

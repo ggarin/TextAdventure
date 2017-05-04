@@ -1,18 +1,71 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from textadventure.directions import Direction, Directions
+from textadventure.directions import Direction
 from textadventure.obj import Obj
 from textadventure.room import Room
 from textadventure.enemy import Enemy
 
 
-class TestRoom(TestCase):
-    @patch('builtins.input', lambda: 'N')
-    def test_action_room(self):
-        my_room = Room(directions=Directions())
-        self.assertEqual(my_room.action_room(), Direction.NORTH)
+class TestActionRoom(TestCase):
+    def setUp(self):
+        self.my_room = Room()
 
+    @patch('builtins.input', lambda: 'N')
+    def test_action_room_N(self):
+        self.assertEqual(self.my_room.action_room(), Direction.NORTH)
+
+    @patch('builtins.input', lambda: 'North')
+    def test_action_room_North(self):
+        self.assertEqual(self.my_room.action_room(), Direction.NORTH)
+
+    @patch('builtins.input', lambda: 'S')
+    def test_action_room_S(self):
+        self.assertEqual(self.my_room.action_room(), Direction.SOUTH)
+
+    @patch('builtins.input', lambda: 'South')
+    def test_action_room_South(self):
+        self.assertEqual(self.my_room.action_room(), Direction.SOUTH)
+
+    @patch('builtins.input', lambda: 'E')
+    def test_action_room_E(self):
+        self.assertEqual(self.my_room.action_room(), Direction.EAST)
+
+    @patch('builtins.input', lambda: 'East')
+    def test_action_room_East(self):
+        self.assertEqual(self.my_room.action_room(), Direction.EAST)
+
+    @patch('builtins.input', lambda: 'W')
+    def test_action_room_W(self):
+        self.assertEqual(self.my_room.action_room(), Direction.WEST)
+
+    @patch('builtins.input', lambda: 'West')
+    def test_action_room_West(self):
+        self.assertEqual(self.my_room.action_room(), Direction.WEST)
+
+
+class TestActionRoomTwice(TestCase):
+
+    def setUp(self):
+        self.my_room = Room(directions=[Direction.WEST, Direction.NORTH])
+
+    @patch('builtins.input')
+    def test_ask_direction_unknown_direction(self, mock_input):
+        mock_input.side_effect = ['B', 'N']
+        self.assertEqual(self.my_room.action_room(), Direction.NORTH)
+
+    @patch('builtins.input')
+    def test_ask_direction_blocked_direction(self, mock_input):
+        mock_input.side_effect = ['E', 'N']
+        self.assertEqual(self.my_room.action_room(), Direction.NORTH)
+
+    @patch('builtins.input')
+    def test_ask_direction_first_direction(self, mock_input):
+        mock_input.side_effect = ['W', 'N']
+        self.assertEqual(self.my_room.action_room(), Direction.WEST)
+
+
+class TestRoom(TestCase):
     def test_verify_entry_no_key_needed(self):
         my_room = Room(obj_in_room=None)
         keys = []
