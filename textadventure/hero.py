@@ -14,14 +14,28 @@ class Hero:
     def display(self):
         print(self.name + ' is in the room ' + self.current_room.name)
 
-    def move(self, room: Room):
-        self.current_room = room
-
     def entry(self, room: Room):
-        if room.verify_entry(self.inventory):
-            self.move(room)
+        if self.verify_entry(room):
+            self.current_room = room
         else:
             input('Press enter to continue...')
+
+    def verify_entry(self, room: Room):
+        if room.condition_to_enter is None:
+            return True
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print('The door is closed.')
+        if not self.inventory:
+            print('You have nothing on you to open the door.')
+            return False
+        print('What do you want to use?')
+        obj_used = self.use_obj_inv(is_punch=False)
+        if room.condition_to_enter == obj_used:
+            print('You open the door with the ' + obj_used.value + '!')
+            return True
+        else:
+            print('Nothing happen!')
+            return False
 
     def action(self):
         self.meet_enemy()
@@ -38,24 +52,6 @@ class Hero:
             self.inventory.append(self.current_room.obj_in_room)
             self.current_room.delete_obj()
 
-    def defeat_enemy(self):
-        # TODO: Refactor with room.verify_entry
-        print('What do you want to use to fight him?')
-        for iInv in range(len(self.inventory)):
-            print(str(iInv+1) + ' - ' + self.inventory[iInv].value)
-        print(str(len(self.inventory) + 1) + ' - Punch')
-        while True:
-            try:
-                choice = int(input()) - 1
-                if choice == len(self.inventory):
-                    choice = Obj.PUNCH
-                else:
-                    choice = self.inventory[choice]
-                break
-            except (ValueError, IndexError):
-                print('Invalid object')
-        return self.current_room.enemy.is_win_fight(choice)
-
     def meet_enemy(self):
         if self.current_room.enemy is None:
             return
@@ -67,3 +63,25 @@ class Hero:
             print('You have been defeated by the ' + self.current_room.enemy.name + '!')
             print('You are dead!')
             self.status = False
+
+    def defeat_enemy(self):
+        print('What do you want to use to fight him?')
+        obj_used = self.use_obj_inv(is_punch=True)
+        return self.current_room.enemy.is_win_fight(obj_used)
+
+    def use_obj_inv(self, is_punch: bool = False):
+        for iInv in range(len(self.inventory)):
+            print(str(iInv+1) + ' - ' + self.inventory[iInv].value)
+        if is_punch:
+            print(str(len(self.inventory) + 1) + ' - Punch')
+        while True:
+            try:
+                choice = int(input()) - 1
+                if is_punch & choice == len(self.inventory):
+                    choice = Obj.PUNCH
+                else:
+                    choice = self.inventory[choice]
+                break
+            except (ValueError, IndexError):
+                print('Invalid object')
+        return choice

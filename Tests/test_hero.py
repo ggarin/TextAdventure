@@ -9,13 +9,8 @@ from textadventure.enemy import Enemy
 
 
 class TestHero(TestCase):
-    def test_move(self):
-        my_hero = Hero(room=Room('Init Room'))
-        move_room = Room('Move room')
-        my_hero.move(move_room)
-        self.assertEqual(move_room, my_hero.current_room)
 
-    @patch.object(Room, "verify_entry")
+    @patch.object(Hero, "verify_entry")
     def test_entry_allowed(self, mock_verify_entry):
         mock_verify_entry.return_value = True
         my_hero = Hero(room=Room('Init Room'))
@@ -23,7 +18,7 @@ class TestHero(TestCase):
         my_hero.entry(move_room)
         self.assertEqual(my_hero.current_room, move_room)
 
-    @patch.object(Room, "verify_entry")
+    @patch.object(Hero, "verify_entry")
     @patch('builtins.input')
     def test_entry_not_allowed(self, mock_verify_entry, mock_input):
         mock_verify_entry.return_value = False
@@ -33,6 +28,30 @@ class TestHero(TestCase):
         move_room = Room('Move room')
         my_hero.entry(move_room)
         self.assertEqual(my_hero.current_room, init_room)
+
+    def test_verify_entry_no_key_needed(self):
+        my_hero = Hero(inventory=[])
+        my_room = Room(obj_in_room=None)
+        self.assertTrue(my_hero.verify_entry(my_room))
+
+    def test_verify_entry_key_needed_no_inventory(self):
+        my_hero = Hero(inventory=[])
+        my_room = Room(condition_to_enter=Obj.BATHROOM_KEY)
+        self.assertFalse(my_hero.verify_entry(my_room))
+
+    @patch.object(Hero, "use_obj_inv")
+    def test_verify_entry_key_needed_good_key_selected(self, mock_use_obj_inv):
+        mock_use_obj_inv.return_value = Obj.BATHROOM_KEY
+        my_hero = Hero(inventory=[Obj.BATHROOM_KEY])
+        my_room = Room(condition_to_enter=Obj.BATHROOM_KEY)
+        self.assertTrue(my_hero.verify_entry(my_room))
+
+    @patch.object(Hero, "use_obj_inv")
+    def test_verify_entry_key_needed_bad_key_selected(self, mock_use_obj_inv):
+        mock_use_obj_inv.return_value = Obj.RANDOM_KEY
+        my_hero = Hero(inventory=[Obj.RANDOM_KEY])
+        my_room = Room(condition_to_enter=Obj.BATHROOM_KEY)
+        self.assertFalse(my_hero.verify_entry(my_room))
 
     @patch('builtins.input')
     def test_action_not_dead(self, mock_input):
@@ -59,29 +78,29 @@ class TestHero(TestCase):
         my_hero.pick_obj()
         self.assertNotIn(Obj.BATHROOM_KEY, my_hero.inventory)
 
-    @patch('builtins.input')
-    def test_defeat_enemy_when_enemy(self, mock_input):
-        mock_input.return_value = 1
+    @patch.object(Hero, 'use_obj_inv')
+    def test_defeat_enemy(self, mock_use_obj_inv):
+        mock_use_obj_inv.return_value = Obj.GUN
         my_hero = Hero(room=Room(enemy=Enemy(kill_by=Obj.GUN)), inventory=[Obj.GUN])
         self.assertTrue(my_hero.defeat_enemy())
 
     @patch('builtins.input')
-    def test_defeat_enemy_when_enemy_no_inventory(self, mock_input):
+    def test_use_obj_inv_no_punch(self, mock_input):
         mock_input.return_value = 1
-        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Obj.GUN)), inventory=[])
-        self.assertFalse(my_hero.defeat_enemy())
+        my_hero = Hero(room=Room(), inventory=[Obj.GUN])
+        self.assertEqual(my_hero.use_obj_inv(is_punch=False), Obj.GUN)
 
     @patch('builtins.input')
-    def test_defeat_enemy_when_enemy_bad_inventory(self, mock_input):
-        mock_input.return_value = 1
-        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Obj.GUN)), inventory=[Obj.RANDOM_KEY])
-        self.assertFalse(my_hero.defeat_enemy())
+    def test_use_obj_inv_no_punch_bad_choice(self, mock_input):
+        mock_input.side_effect = [2, 1]
+        my_hero = Hero(room=Room(), inventory=[Obj.GUN])
+        self.assertEqual(my_hero.use_obj_inv(is_punch=False), Obj.GUN)
 
     @patch('builtins.input')
-    def test_defeat_enemy_when_enemy_bad_choice(self, mock_input):
-        mock_input.side_effect = [12, 1]
-        my_hero = Hero(room=Room(enemy=Enemy(kill_by=Obj.GUN)), inventory=[Obj.GUN])
-        self.assertTrue(my_hero.defeat_enemy())
+    def test_use_obj_inv_punch(self, mock_input):
+        mock_input.return_value = 1
+        my_hero = Hero(room=Room(), inventory=[])
+        self.assertEqual(my_hero.use_obj_inv(is_punch=False), Obj.PUNCH)
 
     def test_meet_enemy_when_no_enemy(self):
         my_hero = Hero(room=Room(enemy=None))

@@ -45,7 +45,6 @@ class TestActionRoom(TestCase):
 
 
 class TestActionRoomTwice(TestCase):
-
     def setUp(self):
         self.my_room = Room(directions=[Direction.WEST, Direction.NORTH])
 
@@ -66,37 +65,6 @@ class TestActionRoomTwice(TestCase):
 
 
 class TestRoom(TestCase):
-    def test_verify_entry_no_key_needed(self):
-        my_room = Room(obj_in_room=None)
-        keys = []
-        self.assertTrue(my_room.verify_entry(keys))
-
-    def test_verify_entry_key_needed_no_inventory(self):
-        my_room = Room(condition_to_enter=Obj.BATHROOM_KEY)
-        keys = []
-        self.assertFalse(my_room.verify_entry(keys))
-
-    @patch('builtins.input')
-    def test_verify_entry_key_needed_good_key_selected(self, mock_input):
-        mock_input.return_value = 1
-        my_room = Room(condition_to_enter=Obj.BATHROOM_KEY)
-        keys = [Obj.BATHROOM_KEY, Obj.RANDOM_KEY]
-        self.assertTrue(my_room.verify_entry(keys))
-
-    @patch('builtins.input')
-    def test_verify_entry_key_needed_bad_key_selected(self, mock_input):
-        mock_input.return_value = 2
-        my_room = Room(condition_to_enter=Obj.BATHROOM_KEY)
-        keys = [Obj.BATHROOM_KEY, Obj.RANDOM_KEY]
-        self.assertFalse(my_room.verify_entry(keys))
-
-    @patch('builtins.input')
-    def test_verify_entry_key_needed_good_key_selected_after_mistakes(self, mock_input):
-        mock_input.side_effect = ['a', 12, 1]
-        my_room = Room(condition_to_enter=Obj.BATHROOM_KEY)
-        keys = [Obj.BATHROOM_KEY, Obj.RANDOM_KEY]
-        self.assertTrue(my_room.verify_entry(keys))
-
     def test_delete_key(self):
         my_room = Room(obj_in_room=Obj.BATHROOM_KEY)
         my_room.delete_obj()
