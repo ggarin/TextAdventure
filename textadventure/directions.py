@@ -8,15 +8,16 @@ class Direction(str, Enum):
     WEST = 'W - West'
 
 
+# TODO: not define as a class
 class Directions:
     def __init__(self, directions: [Direction]=None):
         if directions is None:
             directions = [Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST]
-        self.__directions = directions
+        self.directions = directions
 
     def ask_direction(self):
         print('Where do you want to go ?')
-        for iDirection in self.__directions:
+        for iDirection in self.directions:
             print(iDirection.value)
         valid_input = False
         direction_choose: Direction
@@ -34,7 +35,7 @@ class Directions:
                 valid_input = False
                 print('Unknown direction input. Please, try again!')
                 continue
-            if direction_choose not in self.__directions:
+            if direction_choose not in self.directions:
                 valid_input = False
                 print('You cannot go in this direction. Please, choose another direction!')
             else:

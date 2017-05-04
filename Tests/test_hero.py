@@ -39,7 +39,7 @@ class TestHero(TestCase):
         mock_input.return_value = 'N'
         my_hero = Hero(room=Room(key=Keys.BATHROOM_KEY))
         self.assertEqual(Direction.NORTH, my_hero.action())
-        self.assertIn(Keys.BATHROOM_KEY, my_hero.keys)
+        self.assertIn(Keys.BATHROOM_KEY, my_hero.inventory)
 
     def test_action_dead(self):
         my_hero = Hero(room=Room(key=Keys.BATHROOM_KEY))
@@ -48,16 +48,16 @@ class TestHero(TestCase):
 
     def test_pick_key_with_key(self):
         my_hero = Hero(room=Room(key=Keys.BATHROOM_KEY))
-        self.assertNotIn(Keys.BATHROOM_KEY, my_hero.keys)
+        self.assertNotIn(Keys.BATHROOM_KEY, my_hero.inventory)
         my_hero.pick_key()
-        self.assertIn(Keys.BATHROOM_KEY, my_hero.keys)
+        self.assertIn(Keys.BATHROOM_KEY, my_hero.inventory)
         self.assertIsNone(my_hero.current_room.key)
 
     def test_pick_key_without_key(self):
         my_hero = Hero(room=Room(key=None))
-        self.assertNotIn(Keys.BATHROOM_KEY, my_hero.keys)
+        self.assertNotIn(Keys.BATHROOM_KEY, my_hero.inventory)
         my_hero.pick_key()
-        self.assertNotIn(Keys.BATHROOM_KEY, my_hero.keys)
+        self.assertNotIn(Keys.BATHROOM_KEY, my_hero.inventory)
 
     @patch('builtins.input')
     def test_defeat_enemy_when_enemy(self, mock_input):

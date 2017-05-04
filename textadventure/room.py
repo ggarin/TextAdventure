@@ -7,25 +7,25 @@ class Room:
     def __init__(self, name: str='Default Room', description: str='Default Description',
                  directions: Directions=Directions(), key: Keys=None, condition: Keys=None, is_win: bool=False,
                  enemy: Enemy=None):
-        self.__name = name
-        self.__description = description
-        self.__directions = directions
-        self.__key = key
-        self.__condition = condition
-        self.__enemy = enemy
-        self.__is_win = is_win
+        self.name = name
+        self.description = description
+        self.directions = directions
+        self.key = key
+        self.condition = condition
+        self.enemy = enemy
+        self.is_win = is_win
 
     def display(self):
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        print(self.__name)
+        print(self.name)
         print('Description:')
-        print(self.__description)
+        print(self.description)
 
     def action_room(self):
-        return self.__directions.ask_direction()
+        return self.directions.ask_direction()
 
     def verify_entry(self, inventory: [Keys]):
-        if self.__condition is None:
+        if self.condition is None:
             return True
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         print('The door is closed.')
@@ -41,7 +41,7 @@ class Room:
                 break
             except (ValueError, IndexError):
                 print('Invalid object')
-        if self.__condition == choice:
+        if self.condition == choice:
             print('You open the door with the ' + choice.value + '!')
             return True
         else:
@@ -49,23 +49,7 @@ class Room:
             return False
 
     def delete_key(self):
-        self.__key = None
+        self.key = None
 
     def delete_enemy(self):
-        self.__enemy = None
-
-    @property
-    def key(self):
-        return self.__key
-
-    @property
-    def name(self):
-        return self.__name
-
-    @property
-    def is_win(self):
-        return self.__is_win
-
-    @property
-    def enemy(self):
-        return self.__enemy
+        self.enemy = None
