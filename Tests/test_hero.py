@@ -100,7 +100,7 @@ class TestHero(TestCase):
     def test_use_obj_inv_punch(self, mock_input):
         mock_input.return_value = 1
         my_hero = Hero(room=Room(), inventory=[])
-        self.assertEqual(my_hero.use_obj_inv(is_punch=False), Obj.PUNCH)
+        self.assertEqual(my_hero.use_obj_inv(is_punch=True), Obj.PUNCH)
 
     def test_meet_enemy_when_no_enemy(self):
         my_hero = Hero(room=Room(enemy=None))

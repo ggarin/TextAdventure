@@ -77,7 +77,7 @@ class Hero:
         while True:
             try:
                 choice = int(input()) - 1
-                if is_punch & choice == len(self.inventory):
+                if is_punch and choice == len(self.inventory):
                     choice = Obj.PUNCH
                 else:
                     choice = self.inventory[choice]
