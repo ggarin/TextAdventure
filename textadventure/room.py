@@ -29,14 +29,14 @@ class Room:
         valid_input = False
         direction_choose: Direction
         while not valid_input:
-            user_chose = input()
-            if user_chose in ['N', 'North']:
+            user_choose = input()
+            if user_choose in ['N', 'North']:
                 direction_choose = Direction.NORTH
-            elif user_chose in ['E', 'East']:
+            elif user_choose in ['E', 'East']:
                 direction_choose = Direction.EAST
-            elif user_chose in ['S', 'South']:
+            elif user_choose in ['S', 'South']:
                 direction_choose = Direction.SOUTH
-            elif user_chose in ['W', 'West']:
+            elif user_choose in ['W', 'West']:
                 direction_choose = Direction.WEST
             else:
                 valid_input = False
