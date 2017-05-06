@@ -8,7 +8,7 @@ from .enemy import Enemy
 
 
 class World:
-    def __init__(self, name: str=None):
+    def __init__(self, name: str=None, init_x_pos: int=0, init_y_pos: int=2):
         room3 = Room('Start', 'You just enter into a manor! You are in a big room with a nice carpet. The door '
                               'behind you close itself. You now have to choose in three direction.',
                      [Direction.WEST, Direction.NORTH, Direction.EAST])
@@ -47,23 +47,28 @@ class World:
         room5 = Room('Bathroom', 'You open the door and find a bathroom. You discover the girl afraid and crying! You '
                                  'saved her!',
                      [Direction.EAST, Direction.SOUTH], condition_to_enter=Obj.BATHROOM_KEY, is_win=True)
+        self.__room_table = None
         self.room_table = numpy.matrix([[room1, room2, room3, room4], [room5, Room(), room7, room8],
-                                        [room9, room10, room11, room12], [Room(), room14, room15, room16]],
-                                       dtype=Room)
-        self.hero = Hero(name, self.room_table[0, 2])
+                                        [room9, room10, room11, room12], [Room(), room14, room15, room16]], dtype=Room)
+        self.hero = Hero(name, self.room_table[init_x_pos, init_y_pos])
 
-    def display(self):
-        room_shape = self.room_table.shape
-        print(' '.join(['The world contains', str(room_shape[0]*room_shape[1]), 'rooms']))
+    @property
+    def room_table(self):
+        return self.__room_table
+
+    @room_table.setter
+    def room_table(self, room_table: numpy.matrix):
+        self.__room_table = room_table
+        for (x, y), value in numpy.ndenumerate(room_table):
+            room_table[x,y].x_pos = x
+            room_table[x,y].y_pos = y
 
     def run_game(self):
         while not self.hero.current_room.is_win:
             direction = self.hero.action()
             if direction is None:
                 break
-            loc_room: tuple = numpy.where(self.room_table == self.hero.current_room)
-            new_loc_room = move(direction, loc_room)
-            new_room: Room = self.room_table.item(new_loc_room[0][0], new_loc_room[1][0])
+            new_room = self.get_room_after_move(direction)
             self.hero.entry(new_room)
         if self.hero.is_alive:
             self.hero.current_room.display()
@@ -71,15 +76,16 @@ class World:
         else:
             print('You Loose!')
 
-
-def move(direction: Direction, location: tuple):
-    new_location = ()
-    if direction == Direction.NORTH:
-        new_location = (location[0] + 1, location[1])
-    elif direction == Direction.EAST:
-        new_location = (location[0], location[1] + 1)
-    elif direction == Direction.SOUTH:
-        new_location = (location[0] - 1, location[1])
-    elif direction == Direction.WEST:
-        new_location = (location[0], location[1] - 1)
-    return new_location
+    def get_room_after_move(self, direction: Direction):
+        old_x_pos = self.hero.current_room.x_pos
+        old_y_pos = self.hero.current_room.y_pos
+        new_room = None
+        if direction == Direction.NORTH:
+            new_room = self.room_table[old_x_pos+1, old_y_pos]
+        elif direction == Direction.EAST:
+            new_room = self.room_table[old_x_pos, old_y_pos+1]
+        elif direction == Direction.SOUTH:
+            new_room = self.room_table[old_x_pos-1, old_y_pos]
+        elif direction == Direction.WEST:
+            new_room = self.room_table[old_x_pos, old_y_pos-1]
+        return new_room

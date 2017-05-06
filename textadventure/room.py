@@ -16,6 +16,8 @@ class Room:
         self.condition_to_enter = condition_to_enter
         self.enemy = enemy
         self.is_win = is_win
+        self.x_pos = None
+        self.y_pos = None
 
     def display(self):
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
