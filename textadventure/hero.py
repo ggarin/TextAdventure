@@ -11,9 +11,6 @@ class Hero:
         self.inventory = inventory
         self.is_alive = True
 
-    def display(self):
-        print(' '.join([self.name, 'is in the room', self.current_room.name]))
-
     def entry(self, room: Room):
         if self.verify_entry(room):
             self.current_room = room
