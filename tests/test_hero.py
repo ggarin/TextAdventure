@@ -86,12 +86,6 @@ class TestHero(TestCase):
 
     @patch('builtins.input')
     def test_use_obj_inv_no_punch(self, mock_input):
-        mock_input.return_value = 1
-        my_hero = Hero(room=Room(), inventory=[Obj.GUN])
-        self.assertEqual(my_hero.use_obj_inv(is_punch=False), Obj.GUN)
-
-    @patch('builtins.input')
-    def test_use_obj_inv_no_punch_bad_choice(self, mock_input):
         mock_input.side_effect = [2, 1]
         my_hero = Hero(room=Room(), inventory=[Obj.GUN])
         self.assertEqual(my_hero.use_obj_inv(is_punch=False), Obj.GUN)

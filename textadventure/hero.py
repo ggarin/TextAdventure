@@ -70,10 +70,11 @@ class Hero:
         return self.current_room.enemy.is_win_fight(obj_used)
 
     def use_obj_inv(self, is_punch: bool = False):
-        for iInv in range(len(self.inventory)):
-            print(str(iInv+1) + ' - ' + self.inventory[iInv].value)
+        template_display = '%-2i - %s'
+        list_inv = [template_display % (iInv+1, self.inventory[iInv].value) for iInv in range(len(self.inventory))]
         if is_punch:
-            print(str(len(self.inventory) + 1) + ' - Punch')
+            list_inv.append(template_display % (len(self.inventory) + 1, Obj.PUNCH.value))
+        print('\n'.join(list_inv))
         while True:
             try:
                 choice = int(input()) - 1
