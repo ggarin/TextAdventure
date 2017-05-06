@@ -12,5 +12,5 @@ class Enemy:
 
     def display(self):
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        print('You meet the ' + self.name + '!')
+        print(''.join(['You meet the ', self.name, '!']))
         print(self.context)

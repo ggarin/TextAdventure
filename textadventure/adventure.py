@@ -4,7 +4,7 @@ from textadventure.world import World
 def main():
     print('Welcome to Text Adventure Game - v1.0')
     name = input('What is your name?')
-    print('Hi ' + name + '! A little girl have disappear! Can you find her in the manor ?')
+    print(''.join(['Hi ', name, '! A little girl have disappear! Can you find her in the manor?']))
     input('Press enter to start your quest!')
     my_world = World(name)
     my_world.run_game()

@@ -54,7 +54,7 @@ class World:
 
     def display(self):
         room_shape = self.room_table.shape
-        print('The world contains ' + str(room_shape[0]*room_shape[1]) + ' rooms')
+        print(' '.join(['The world contains', str(room_shape[0]*room_shape[1]), 'rooms']))
 
     def run_game(self):
         while not self.hero.current_room.is_win:

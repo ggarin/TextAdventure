@@ -12,7 +12,7 @@ class Hero:
         self.is_alive = True
 
     def display(self):
-        print(self.name + ' is in the room ' + self.current_room.name)
+        print(' '.join([self.name, 'is in the room', self.current_room.name]))
 
     def entry(self, room: Room):
         if self.verify_entry(room):
@@ -31,7 +31,7 @@ class Hero:
         print('What do you want to use?')
         obj_used = self.use_obj_inv(is_punch=False)
         if room.condition_to_enter == obj_used:
-            print('You open the door with the ' + obj_used.value + '!')
+            print(''.join(['You open the door with the ', obj_used.value, '!']))
             return True
         else:
             print('Nothing happen!')
@@ -48,7 +48,7 @@ class Hero:
     def pick_obj(self):
         if self.current_room.obj_in_room is not None:
             print('Object found:')
-            print('You found the ' + self.current_room.obj_in_room.value + '!')
+            print(''.join(['You found the ', self.current_room.obj_in_room.value, '!']))
             self.inventory.append(self.current_room.obj_in_room)
             self.current_room.delete_obj()
 
@@ -57,10 +57,10 @@ class Hero:
             return
         self.current_room.enemy.display()
         if self.defeat_enemy():
-            print('You defeat the ' + self.current_room.enemy.name + '!')
+            print(''.join(['You defeat the ', self.current_room.enemy.name, '!']))
             self.current_room.delete_enemy()
         else:
-            print('You have been defeated by the ' + self.current_room.enemy.name + '!')
+            print(''.join(['You have been defeated by the ', self.current_room.enemy.name, '!']))
             print('You are dead!')
             self.is_alive = False
 
