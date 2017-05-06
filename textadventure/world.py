@@ -65,7 +65,7 @@ class World:
             new_loc_room = move(direction, loc_room)
             new_room: Room = self.room_table.item(new_loc_room[0][0], new_loc_room[1][0])
             self.hero.entry(new_room)
-        if self.hero.status:
+        if self.hero.is_alive:
             self.hero.current_room.display()
             print('You Win!')
         else:

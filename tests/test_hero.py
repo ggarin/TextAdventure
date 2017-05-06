@@ -62,7 +62,7 @@ class TestHero(TestCase):
 
     def test_action_dead(self):
         my_hero = Hero(room=Room(obj_in_room=Obj.BATHROOM_KEY))
-        my_hero.status = False
+        my_hero.is_alive = False
         self.assertIsNone(my_hero.action())
 
     def test_pick_key_with_key(self):
@@ -105,7 +105,7 @@ class TestHero(TestCase):
         mock_defeat_enemy.return_value = True
         my_hero = Hero(room=Room(enemy=Enemy(kill_by=Obj.GUN)))
         my_hero.meet_enemy()
-        self.assertTrue(my_hero.status)
+        self.assertTrue(my_hero.is_alive)
         self.assertIsNone(my_hero.current_room.enemy)
 
     @patch.object(Hero, "defeat_enemy")
@@ -113,5 +113,5 @@ class TestHero(TestCase):
         mock_defeat_enemy.return_value = False
         my_hero = Hero(room=Room(enemy=Enemy(kill_by=Obj.GUN)))
         my_hero.meet_enemy()
-        self.assertFalse(my_hero.status)
+        self.assertFalse(my_hero.is_alive)
         self.assertIsNotNone(my_hero.current_room.enemy)

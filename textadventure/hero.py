@@ -9,7 +9,7 @@ class Hero:
         self.name = name
         self.current_room = room
         self.inventory = inventory
-        self.status = True
+        self.is_alive = True
 
     def display(self):
         print(self.name + ' is in the room ' + self.current_room.name)
@@ -39,7 +39,7 @@ class Hero:
 
     def action(self):
         self.meet_enemy()
-        if not self.status:
+        if not self.is_alive:
             return None
         self.current_room.display()
         self.pick_obj()
@@ -62,7 +62,7 @@ class Hero:
         else:
             print('You have been defeated by the ' + self.current_room.enemy.name + '!')
             print('You are dead!')
-            self.status = False
+            self.is_alive = False
 
     def defeat_enemy(self):
         print('What do you want to use to fight him?')
