@@ -74,3 +74,8 @@ class TestRoom(TestCase):
         my_room = Room(enemy=Enemy())
         my_room.delete_enemy()
         self.assertIsNone(my_room.enemy)
+
+    def test_sort_direction(self):
+        my_room = Room(directions=[Direction.SOUTH, Direction.NORTH, Direction.WEST, Direction.EAST])
+        my_room.sort_direction()
+        self.assertEqual(my_room.directions, [Direction.WEST, Direction.NORTH, Direction.EAST, Direction.SOUTH])

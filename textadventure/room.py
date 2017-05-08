@@ -56,3 +56,6 @@ class Room:
 
     def delete_enemy(self):
         self.enemy = None
+
+    def sort_direction(self):
+        self.directions = sorted(self.directions)
